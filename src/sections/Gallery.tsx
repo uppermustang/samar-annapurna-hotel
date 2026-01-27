@@ -1,10 +1,26 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const GALLERY_IMAGES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((n) => ({
-  id: n,
-  src: encodeURI(`/Gallery (${n}).PNG`),
-  alt: `Samar Annapurna Hotel gallery ${n}`,
+const GALLERY_FILES = [
+  'Gallery (1).JPG',
+  'Gallery (1).PNG',
+  'Gallery (2).PNG',
+  'Gallery (3).PNG',
+  'Gallery (4).PNG',
+  'Gallery (5).PNG',
+  'Gallery (6).PNG',
+  'Gallery (7).PNG',
+  'Gallery (8).PNG',
+  'Gallery (9).PNG',
+  'Gallery (10).JPG',
+  'Gallery (11).PNG',
+  'Gallery (12).PNG',
+]
+
+const GALLERY_IMAGES = GALLERY_FILES.map((file, i) => ({
+  id: i + 1,
+  src: encodeURI(`/${file}`),
+  alt: `Samar Annapurna Hotel gallery`,
 }))
 
 export function Gallery() {

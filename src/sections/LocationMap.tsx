@@ -25,6 +25,15 @@ function MapContent() {
     didCenter.current = true
     map.setView(HOTEL_POSITION, DEFAULT_ZOOM)
   }, [map])
+  useEffect(() => {
+    const onZoomEnd = () => {
+      map.setView(HOTEL_POSITION, map.getZoom(), { animate: true })
+    }
+    map.on('zoomend', onZoomEnd)
+    return () => {
+      map.off('zoomend', onZoomEnd)
+    }
+  }, [map])
   return null
 }
 
@@ -61,6 +70,7 @@ export function LocationMap() {
               center={HOTEL_POSITION}
               zoom={DEFAULT_ZOOM}
               scrollWheelZoom
+              dragging
               className="w-full h-full"
               style={{ height: '100%', width: '100%' }}
             >

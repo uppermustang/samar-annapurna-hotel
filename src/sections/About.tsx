@@ -1,14 +1,13 @@
 import { motion } from 'framer-motion'
 
-const IMG =
-  'https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=800&q=80'
+const OUR_STORY_IMG = '/NilgiriSamar.jpg'
 
 export function About() {
   return (
     <section id="about" className="scroll-mt-20 py-16 sm:py-24 bg-beige-light/50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div
+          <motion.figure
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-50px' }}
@@ -16,12 +15,15 @@ export function About() {
             className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3] max-h-[400px]"
           >
             <img
-              src={IMG}
-              alt="Himalayan lodge Upper Mustang"
+              src={OUR_STORY_IMG}
+              alt="Mt. Nilgiri view from Samar Annapurna Hotel"
               className="w-full h-full object-cover"
               loading="lazy"
             />
-          </motion.div>
+            <figcaption className="absolute bottom-0 left-0 right-0 bg-deepblue/85 text-beige-light text-sm font-medium py-2 px-4 text-center">
+              Mt. Nilgiri view from Samar Annapurna Hotel
+            </figcaption>
+          </motion.figure>
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}

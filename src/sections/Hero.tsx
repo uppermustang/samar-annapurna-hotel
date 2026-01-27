@@ -61,13 +61,13 @@ export function Hero() {
             variants={item}
             className="text-lg sm:text-xl md:text-2xl text-beige-light font-medium mb-3 max-w-2xl mx-auto drop-shadow-[0_1px_8px_rgba(0,0,0,0.3)]"
           >
-            Since the 90s – Family-Run Himalayan Lodge in Mustang, Nepal
+            Since the 90s – Family-Run Samar Annapurna Hotel in Mustang, Nepal
           </motion.p>
           <motion.p
             variants={item}
             className="text-base sm:text-lg text-beige-light/95 max-w-2xl mx-auto mb-10 sm:mb-12 leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.25)]"
           >
-            Backyard streams and epic views of Mt. Nilgiri, Thorang La Himal, Annapurna, the Mosaic Hills, and other peaks. Authentic hospitality in the heart of Upper Mustang.
+            Backyard streams, a green camping area in the garden, and epic views of Mt. Nilgiri, Thorang La Himal, Annapurna, the Mosaic Hills, and other peaks. Authentic hospitality in the heart of Upper Mustang.
           </motion.p>
           <motion.div
             variants={item}

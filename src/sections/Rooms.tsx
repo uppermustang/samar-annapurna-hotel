@@ -1,53 +1,60 @@
 import { motion } from 'framer-motion'
 
+// Room types from images uploaded to public (names and captions from filenames)
 const ROOMS = [
   {
     id: 1,
     name: 'Standard Room',
-    description: 'Cozy double or twin beds, traditional decor, warm interiors. Perfect for solo travellers or couples.',
-    image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=80',
+    caption: 'Standard Room',
+    description: 'Cozy accommodation with traditional decor and warm interiors. Perfect for solo travellers or couples.',
+    image: 'Standard Room.png',
     priceNote: 'Based on contact through reservation or phone',
     views: 'Garden / courtyard',
   },
   {
     id: 2,
+    name: 'Double Bed with Mountain View',
+    caption: 'Double Bed with Mountain View',
+    description: 'Double bed with direct views of the Himalayan peaks. Warm, welcoming space for couples.',
+    image: 'Double Bed with Mountain View.png',
+    priceNote: 'Based on contact through reservation or phone',
+    views: 'Mountain',
+  },
+  {
+    id: 3,
     name: 'Mountain View Deluxe',
-    description: 'Spacious room with direct views of Nilgiri and Annapurna massif. Private seating area.',
-    image: 'https://images.unsplash.com/photo-1582719478250-c89c6d9cba22?w=600&q=80',
+    caption: 'Mountain View Deluxe',
+    description: 'Spacious room with direct views of Mt. Nilgiri and Annapurna massif. Private seating area.',
+    image: 'Mountain View Deluxe.jpg',
     priceNote: 'Based on contact through reservation or phone',
     views: '7000m+ peaks',
   },
   {
-    id: 3,
+    id: 4,
     name: 'Family Suite',
+    caption: 'Family Suite',
     description: 'Two interconnected rooms, ideal for families. Traditional Tibetan-Nepali touches.',
-    image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80',
+    image: 'Family Suite.jpg',
     priceNote: 'Based on contact through reservation or phone',
     views: 'Mountain & courtyard',
   },
   {
-    id: 4,
-    name: 'Twin Cozy',
-    description: 'Two single beds, warm lighting, wooden furniture. Great for friends or small groups.',
-    image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=600&q=80',
-    priceNote: 'Based on contact through reservation or phone',
-    views: 'Stream / garden',
-  },
-  {
     id: 5,
-    name: 'Superior Double',
-    description: 'Larger double room with extra seating, traditional rugs, and mountain glimpses.',
-    image: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&q=80',
+    name: 'Garden Camping with Mountain View',
+    caption: 'Garden Camping with Mountain View',
+    description: 'Camp under the stars with mountain vistas. Our garden camping spot combines comfort and nature.',
+    image: 'Garden Camping with  Mountain View.jpg',
     priceNote: 'Based on contact through reservation or phone',
-    views: 'Partial mountain',
+    views: 'Garden & mountain',
   },
   {
     id: 6,
-    name: 'Heritage Room',
-    description: 'Character room with local crafts, exposed beams, and a sense of old Mustang.',
-    image: 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=80',
+    name: 'Superior Room with Balcony and Mountain View',
+    caption: 'Superior Room with Balcony and Mountain View',
+    description: 'Larger room with private balcony and sweeping mountain views. Extra seating and traditional rugs.',
+    image: 'Superior Room with Balcony and Mountain View.jpg',
     priceNote: 'Based on contact through reservation or phone',
-    views: 'Backyard streams',
+    views: 'Balcony, 7000m+ peaks',
   },
 ]
 
@@ -78,14 +85,19 @@ export function Rooms() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
             >
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={room.image}
-                  alt={room.name}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-              </div>
+              <figure className="m-0">
+                <div className="aspect-[4/3] overflow-hidden relative">
+                  <img
+                    src={`/${encodeURI(room.image)}`}
+                    alt={room.name}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <figcaption className="absolute bottom-0 left-0 right-0 bg-deepblue/85 text-beige-light text-sm font-medium py-2 px-4 text-center">
+                    {room.caption}
+                  </figcaption>
+                </div>
+              </figure>
               <div className="p-5">
                 <h3 className="font-display font-semibold text-xl text-deepblue mb-2">{room.name}</h3>
                 <p className="text-deepblue/85 text-sm leading-relaxed mb-3">{room.description}</p>
