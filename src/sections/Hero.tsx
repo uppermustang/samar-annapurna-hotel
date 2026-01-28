@@ -101,7 +101,7 @@ export function Hero() {
       <motion.a
         href="#about"
         aria-label="Scroll down"
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 text-white/90 hover:text-white transition-colors duration-300"
+        className="absolute bottom-12 sm:bottom-10 left-1/2 -translate-x-1/2 z-10 text-white/90 hover:text-white transition-colors duration-300"
         initial={{ opacity: 0, y: -8 }}
         animate={{
           opacity: 1,

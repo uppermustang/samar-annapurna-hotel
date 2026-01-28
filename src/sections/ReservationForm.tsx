@@ -6,11 +6,11 @@ import { motion } from 'framer-motion'
 
 const ROOM_OPTIONS = [
   'Standard Room',
+  'Double Bed with Mountain View',
   'Mountain View Deluxe',
   'Family Suite',
-  'Twin Cozy',
-  'Superior Double',
-  'Heritage Room',
+  'Garden Camping with Mountain View',
+  'Superior Room with Balcony and Mountain View',
 ]
 
 const schema = z
@@ -82,7 +82,12 @@ export function ReservationForm() {
         msg.includes('Failed to fetch') ||
         msg.includes('NetworkError') ||
         msg.includes('Load failed')
-      if (isDev && looksLikeNoApi) {
+      const isEmailNotConfigured = msg.toLowerCase().includes('email') && msg.toLowerCase().includes('config')
+      if (isEmailNotConfigured) {
+        setError(
+          "We're temporarily unable to accept reservations online. Please contact us directly at samarannapurnahotel@gmail.com or +977-9841345621 (WhatsApp)."
+        )
+      } else if (isDev && looksLikeNoApi) {
         setError(
           'Reservation API is not running. For local testing, run: npx vercel dev — then open the URL it shows and try again. Or test on the live site. Ensure Vercel env vars (SMTP_*, RECEIVER_EMAIL) are set for production.'
         )
@@ -92,30 +97,23 @@ export function ReservationForm() {
     }
   }
 
-  if (submitted) {
-    return (
-      <section id="reserve" className="scroll-mt-20 py-16 sm:py-24 bg-beige/20">
-        <div className="max-w-xl mx-auto px-4 sm:px-6 text-center">
+  return (
+    <section id="reserve" className="scroll-mt-20 py-16 sm:py-24 bg-beige/20">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6">
+        {submitted && (
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4 }}
-            className="rounded-2xl bg-white border border-terracotta/30 shadow-lg p-8"
+            className="rounded-2xl bg-white border border-terracotta/30 shadow-lg p-8 text-center mb-8"
           >
-            <div className="text-4xl mb-4">✓</div>
+            <div className="text-4xl mb-4 text-deepblue">✓</div>
             <h2 className="font-display font-bold text-2xl text-deepblue mb-2">Reservation request sent!</h2>
-            <p className="text-deepblue/90 mb-4">
+            <p className="text-deepblue/90 mb-0">
               We&apos;ll confirm soon – limited capacity. Direct family confirmation; we reply within 24h.
             </p>
           </motion.div>
-        </div>
-      </section>
-    )
-  }
-
-  return (
-    <section id="reserve" className="scroll-mt-20 py-16 sm:py-24 bg-beige/20">
-      <div className="max-w-2xl mx-auto px-4 sm:px-6">
+        )}
         <motion.div
           className="text-center mb-10"
           initial={{ opacity: 0, y: 16 }}
