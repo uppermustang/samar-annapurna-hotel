@@ -58,9 +58,9 @@ export function Navbar() {
   const linkOverHero =
     'text-white/95 hover:text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.4)]'
 
-  const logoScrolled = 'font-display font-semibold text-deepblue text-lg md:text-xl'
+  const logoScrolled = 'font-display font-semibold text-deepblue text-lg lg:text-xl'
   const logoOverHero =
-    'font-display font-semibold text-white text-lg md:text-xl drop-shadow-[0_1px_6px_rgba(0,0,0,0.45)]'
+    'font-display font-semibold text-white text-lg lg:text-xl drop-shadow-[0_1px_6px_rgba(0,0,0,0.45)]'
 
   return (
     <nav
@@ -70,7 +70,7 @@ export function Navbar() {
           : 'bg-transparent border-b border-transparent'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 md:h-18">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 lg:h-18">
         <Link
           to="/"
           onClick={() => {
@@ -81,7 +81,7 @@ export function Navbar() {
         >
           Samar Annapurna Hotel
         </Link>
-        <ul className="hidden md:flex items-center gap-6 lg:gap-8">
+        <ul className="hidden lg:flex items-center gap-6 xl:gap-8">
           {NAV_LINKS.map(({ to, label }) => (
             <li key={to}>
               <Link
@@ -98,7 +98,7 @@ export function Navbar() {
           type="button"
           aria-label="Toggle menu"
           aria-expanded={mobileOpen}
-          className={`md:hidden p-2.5 rounded-lg transition-colors duration-300 ease-out ${
+          className={`lg:hidden p-2.5 rounded-lg transition-colors duration-300 ease-out ${
             isScrolled ? 'text-deepblue hover:bg-beige-dark/20' : 'text-white hover:bg-white/10 drop-shadow-[0_1px_4px_rgba(0,0,0,0.4)]'
           }`}
           onClick={() => setMobileOpen((o) => !o)}
@@ -121,7 +121,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="md:hidden overflow-hidden bg-deepblue border-t border-beige/30 shadow-lg"
+            className="lg:hidden overflow-hidden bg-deepblue border-t border-beige/30 shadow-lg"
           >
             <ul className="px-4 py-4 flex flex-col gap-1">
               {NAV_LINKS.map(({ to, label }) => (
