@@ -54,7 +54,8 @@ export function ReservationForm() {
   const onSubmit = async (data: FormData) => {
     setError(null)
     try {
-      const res = await fetch(`${getApiBase()}/api/reserve`, {
+      const url = `${getApiBase()}/api/reserve`
+      const res = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -70,11 +71,24 @@ export function ReservationForm() {
           specialRequests: data.specialRequests ?? '',
         }),
       })
-      const json = await res.json()
+      const json = (await res.json().catch(() => ({}))) as { success?: boolean; error?: string }
       if (!res.ok || !json.success) throw new Error(json.error || 'Request failed')
       setSubmitted(true)
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Something went wrong. Please try again or contact us directly.')
+      const msg = e instanceof Error ? e.message : 'Something went wrong.'
+      const isDev = import.meta.env.DEV
+      const looksLikeNoApi =
+        msg.includes('fetch') ||
+        msg.includes('Failed to fetch') ||
+        msg.includes('NetworkError') ||
+        msg.includes('Load failed')
+      if (isDev && looksLikeNoApi) {
+        setError(
+          'Reservation API is not running. For local testing, run: npx vercel dev — then open the URL it shows and try again. Or test on the live site. Ensure Vercel env vars (SMTP_*, RECEIVER_EMAIL) are set for production.'
+        )
+      } else {
+        setError(msg === 'Request failed' ? 'Something went wrong. Please try again or contact us directly.' : msg)
+      }
     }
   }
 

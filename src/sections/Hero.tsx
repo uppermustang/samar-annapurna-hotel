@@ -35,7 +35,7 @@ export function Hero() {
           src={HERO_IMAGE}
           alt="Samar Annapurna Hotel, Himalayan lodge in Mustang Nepal"
           className="w-full h-full object-cover object-center will-change-transform"
-          fetchPriority="high"
+          fetchpriority="high"
           decoding="async"
           loading="eager"
         />
