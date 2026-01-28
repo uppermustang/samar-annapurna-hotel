@@ -98,10 +98,11 @@ export function Hero() {
           </motion.div>
         </motion.div>
       </div>
-      <motion.a
-        href="#about"
-        aria-label="Scroll down"
-        className="absolute bottom-24 sm:bottom-28 md:bottom-32 left-1/2 -translate-x-1/2 z-10 text-white hover:text-white transition-colors duration-300 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]"
+      <div className="absolute bottom-24 sm:bottom-28 md:bottom-32 left-0 right-0 flex justify-center z-10">
+        <motion.a
+          href="#about"
+          aria-label="Scroll down"
+          className="inline-flex text-white hover:text-white transition-colors duration-300 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]"
         initial={{ opacity: 0, y: -8 }}
         animate={{
           opacity: 1,
@@ -126,7 +127,8 @@ export function Hero() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
         </motion.span>
-      </motion.a>
+        </motion.a>
+      </div>
     </section>
   )
 }
