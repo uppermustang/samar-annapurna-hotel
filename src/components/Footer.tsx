@@ -51,10 +51,10 @@ export function Footer() {
             <address className="not-italic flex flex-col gap-3 text-beige-light/90 text-sm leading-relaxed items-center sm:items-start">
               <span className="transition-colors duration-300">Samar, Chhusang 33100, Nepal</span>
               <a
-                href="mailto:samarannapurna@gmail.com"
+                href="mailto:samarannapurnahotel@gmail.com"
                 className="hover:text-saffron transition-colors duration-300 ease-out"
               >
-                samarannapurna@gmail.com
+                samarannapurnahotel@gmail.com
               </a>
               <span className="flex flex-col gap-0.5">
                 <span className="text-beige-light/70 text-xs">WhatsApp / Phone (same number)</span>

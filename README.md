@@ -52,19 +52,19 @@ Then open the URL shown (e.g. `http://localhost:3000`). The form posts to `/api/
 npm run build
 ```
 
-### 5. Deploy to Vercel
+### 5. Deploy to Vercel (ready to host)
 
-- Push the repo to GitHub/GitLab/Bitbucket and [import the project in Vercel](https://vercel.com/new).
-- Add the env vars above in **Project → Settings → Environment Variables**.
-- Deploy. The site is static; `/api/reserve` runs as a serverless function.
+The project is set up for Vercel:
 
-Or with Vercel CLI:
+- **`vercel.json`** – Build uses `npm run build`, output is `dist`, framework is Vite. Rewrites send `/api/*` to the serverless function and all other routes to `index.html` (SPA). CORS headers are set for `/api/*`.
+- **Env vars** – In Vercel: **Project → Settings → Environment Variables**, add the variables from `.env.example` (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `RECEIVER_EMAIL`) so the reservation form can send emails.
 
-```bash
-npx vercel
-# follow prompts, then:
-npx vercel --prod
-```
+**Deploy:**
+
+1. Push the repo to GitHub/GitLab/Bitbucket and [import the project in Vercel](https://vercel.com/new), or
+2. From the project root: `npx vercel` (first time), then `npx vercel --prod` for production.
+
+The site is static; `/api/reserve` runs as a Vercel serverless function.
 
 ## Project structure
 
