@@ -29,7 +29,7 @@ const item = {
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
+    <section className="relative min-h-screen flex items-start justify-center text-white overflow-hidden pt-[14vh] sm:pt-[16vh] md:pt-[18vh]">
       <div className="absolute inset-0">
         <img
           src={HERO_IMAGE}
@@ -44,7 +44,7 @@ export function Hero() {
           aria-hidden
         />
       </div>
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-5 sm:px-8 md:px-10 py-12 sm:py-16 text-center">
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-5 sm:px-8 md:px-10 pt-4 pb-12 sm:pt-6 sm:pb-16 text-center">
         <motion.div
           variants={container}
           initial="hidden"
@@ -101,7 +101,7 @@ export function Hero() {
       <motion.a
         href="#about"
         aria-label="Scroll down"
-        className="absolute bottom-12 sm:bottom-10 left-1/2 -translate-x-1/2 z-10 text-white/90 hover:text-white transition-colors duration-300"
+        className="absolute bottom-24 sm:bottom-28 md:bottom-32 left-1/2 -translate-x-1/2 z-10 text-white hover:text-white transition-colors duration-300 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]"
         initial={{ opacity: 0, y: -8 }}
         animate={{
           opacity: 1,
